@@ -1,0 +1,25 @@
+{
+  "name": "은하전골 방문경로 (영통점)",
+  "short_name": "은하전골(영통)",
+  "start_url": "/eunha-visit/",
+  "display": "standalone",
+  "background_color": "#FFF9F0",
+  "theme_color": "#D84315",
+  "icons": [
+    {
+      "src": "아이콘144.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    },
+    {
+      "src": "아이콘192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "아이콘512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
