@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>은하전골 방문 경로 조사(인계점)</title>
+
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: #FFF9F0;
+    font-family: 'Malgun Gothic', sans-serif;
+    display: flex;
+    flex-direction: column;
+  }
+  header {
+    padding: 10px 0;
+    text-align: center;
+    background-color: #FFF9F0;
+  }
+  h1 {
+    margin: 0;
+    color: #D84315;
+    font-size: 2.2rem;
+    font-weight: bold;
+  }
+  .grid-container {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 10px;
+    padding: 0 10px 10px 10px;
+  }
+  button {
+    background-color: #FFFFFF;
+    border: 2px solid #FFCC80;
+    border-radius: 15px;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #D84315;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  }
+  button:active {
+    background-color: #D84315;
+    color: #FFFFFF;
+    transform: scale(0.98);
+  }
+  #autoPopup {
+    display: none;
+    position: fixed;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    background: #FFFFFF;
+    padding: 40px;
+    border: 4px solid #FFCC80;
+    border-radius: 20px;
+    text-align: center;
+    z-index: 9999;
+  }
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>방문 경로 조사 <span style="font-size:0.6em; color:#999;">인계점</span></h1>
+</header>
+
+<div class="grid-container">
+  <button onclick="send('유튜브')">유튜브</button>
+  <button onclick="send('페이스북')">페이스북</button>
+  <button onclick="send('인스타그램')">인스타<br>그램</button>
+
+  <button onclick="send('네이버검색')">네이버검색</button>
+  <button onclick="send('당근마켓')">당근</button>
+  <button onclick="send('네이버지도')">네이버<br>지도</button>
+
+  <button onclick="send('틱톡')">틱톡</button>
+  <button onclick="send('쓰레드')">쓰레드</button>
+  <button onclick="send('지인소개')">지인소개</button>
+
+  <button onclick="send('소문듣고')">소문듣고</button>
+  <button onclick="send('지나가다가')">지나가다가</button>
+  <button onclick="send('이미단골')">이미 단골</button>
+</div>
+
+<div id="autoPopup">
+  <h2>감사합니다!</h2>
+</div>
+
+<script>
+  const WEBAPP_URL = "https://script.google.com/macros/s/AKfycbzO5sJEMo7ph8gGoPoBQIZrDNhWP4ISsho8YbbzgTMYhOVgUvJlqduqkyPFSi7BhQvE/exec";
+  const STORE = "인계점";
+
+  function send(source) {
+    const form = new URLSearchParams();
+    form.append("store", STORE);
+    form.append("source", source);
+
+    fetch(WEBAPP_URL, {
+      method: "POST",
+      body: form
+    });
+
+    const p = document.getElementById("autoPopup");
+    p.style.display = "block";
+    setTimeout(() => p.style.display = "none", 1200);
+  }
+</script>
+
+</body>
+</html>
